@@ -455,6 +455,7 @@ h3 {
 }
 
 .timeline-item {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 260px;
   align-items: start;
@@ -472,6 +473,24 @@ h3 {
     border-color 700ms ease,
     box-shadow 700ms ease,
     background-color 700ms ease;
+}
+
+.timeline-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.timeline-heading h3 {
+  margin: 0;
+}
+
+.timeline-company-logo {
+  flex: 0 0 auto;
+  width: 3rem;
+  height: 3rem;
+  object-fit: contain;
+  border-radius: 0.85rem;
 }
 
 .timeline-item.visible {
@@ -1064,6 +1083,15 @@ h3 {
 
   .timeline-item {
     padding: 0.95rem 0.9rem 1rem;
+  }
+
+  .timeline-heading {
+    gap: 0.7rem;
+  }
+
+  .timeline-company-logo {
+    width: 2.45rem;
+    height: 2.45rem;
   }
 
   .timeline-main h3 {
