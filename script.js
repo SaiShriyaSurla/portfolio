@@ -76,3 +76,21 @@ timelineItems.forEach((item, index) => {
 updateTimelineRail();
 window.addEventListener("scroll", updateTimelineRail, { passive: true });
 window.addEventListener("resize", updateTimelineRail);
+
+const timelineToggles = document.querySelectorAll('.timeline-toggle');
+
+timelineToggles.forEach((button) => {
+  button.addEventListener('click', () => {
+    const detailsId = button.getAttribute('aria-controls');
+    const details = detailsId ? document.getElementById(detailsId) : null;
+    if (!details) return;
+
+    const isOpen = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!isOpen));
+    button.textContent = isOpen ? 'See details' : 'Show less';
+    details.hidden = isOpen;
+
+    requestAnimationFrame(updateTimelineRail);
+    setTimeout(updateTimelineRail, 220);
+  });
+});
