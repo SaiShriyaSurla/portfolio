@@ -892,12 +892,13 @@ h3 {
   .typed-text {
     position: static;
     display: inline-block;
-    white-space: nowrap;
+    white-space: normal;
     animation: typing 3.8s steps(48, end) 0.2s forwards;
     width: 0;
     overflow-wrap: anywhere;
     max-width: 100%;
     overflow: hidden;
+    line-height: 1.28;
   }
 
   .typed-cursor {
@@ -978,6 +979,8 @@ h3 {
   .typed-text {
     font-size: inherit;
     text-align: center;
+    white-space: normal;
+    width: 100%;
   }
 
   .hero-title-typed {
