@@ -137,11 +137,66 @@ a {
   flex-wrap: wrap;
   gap: 1.1rem;
   color: var(--muted);
+  align-items: center;
 }
 
 .nav-links a:hover,
 .contact-links a:hover,
 .button:hover {
+  color: var(--text);
+}
+
+.resume-menu {
+  position: relative;
+}
+
+.resume-menu summary {
+  list-style: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+.resume-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.resume-menu summary::after {
+  content: "▾";
+  margin-left: 0.35rem;
+  font-size: 0.75em;
+}
+
+.resume-menu[open] summary,
+.resume-menu summary:hover,
+.resume-menu summary:focus-visible {
+  color: var(--text);
+}
+
+.resume-dropdown {
+  position: absolute;
+  top: calc(100% + 0.7rem);
+  left: 50%;
+  display: grid;
+  gap: 0.35rem;
+  min-width: 12.5rem;
+  padding: 0.55rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 1rem;
+  background: rgba(9, 11, 16, 0.98);
+  box-shadow: var(--shadow);
+  transform: translateX(-50%);
+  z-index: 30;
+}
+
+.resume-dropdown a {
+  display: block;
+  padding: 0.65rem 0.8rem;
+  border-radius: 0.8rem;
+}
+
+.resume-dropdown a:hover,
+.resume-dropdown a:focus-visible {
+  background: rgba(44, 255, 136, 0.08);
   color: var(--text);
 }
 
@@ -738,7 +793,10 @@ h3 {
 }
 
 .cert-card-link {
+  position: relative;
   display: block;
+  overflow: hidden;
+  min-height: 13.5rem;
   transition:
     transform 220ms ease,
     border-color 220ms ease,
@@ -773,6 +831,25 @@ h3 {
 .info-card span {
   display: inline-block;
   margin-top: 0.6rem;
+}
+
+.cert-card-link h3,
+.cert-card-link span {
+  position: relative;
+  z-index: 1;
+  max-width: calc(100% - 6.25rem);
+}
+
+.cert-card-badge {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  width: clamp(3.75rem, 22%, 5.1rem);
+  height: auto;
+  max-height: 4.8rem;
+  object-fit: contain;
+  object-position: bottom right;
+  pointer-events: none;
 }
 
 .contact-panel {
@@ -948,6 +1025,22 @@ h3 {
     font-size: 0.92rem;
   }
 
+  .cert-card-link {
+    min-height: 12.5rem;
+  }
+
+  .cert-card-link h3,
+  .cert-card-link span {
+    max-width: calc(100% - 5.2rem);
+  }
+
+  .cert-card-badge {
+    right: 0.85rem;
+    bottom: 0.85rem;
+    width: clamp(3.2rem, 18vw, 4.4rem);
+    max-height: 4.1rem;
+  }
+
   .typed-shell {
     display: block;
     width: 100%;
@@ -1014,12 +1107,19 @@ h3 {
   .nav-links {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(5, max-content);
+    grid-template-columns: repeat(6, max-content);
     justify-content: space-between;
     align-items: center;
     gap: 0.45rem;
-    font-size: 0.9rem;
+    font-size: 0.82rem;
     white-space: nowrap;
+  }
+
+  .resume-dropdown {
+    left: auto;
+    right: 0;
+    transform: none;
+    min-width: 10.75rem;
   }
 
   .hero-section {

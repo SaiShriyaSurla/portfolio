@@ -78,6 +78,7 @@ window.addEventListener("scroll", updateTimelineRail, { passive: true });
 window.addEventListener("resize", updateTimelineRail);
 
 const timelineToggles = document.querySelectorAll('.timeline-toggle');
+const resumeMenus = document.querySelectorAll('.resume-menu');
 
 timelineToggles.forEach((button) => {
   button.addEventListener('click', () => {
@@ -92,5 +93,13 @@ timelineToggles.forEach((button) => {
 
     requestAnimationFrame(updateTimelineRail);
     setTimeout(updateTimelineRail, 220);
+  });
+});
+
+document.addEventListener('click', (event) => {
+  resumeMenus.forEach((menu) => {
+    if (!menu.open) return;
+    if (menu.contains(event.target)) return;
+    menu.open = false;
   });
 });
