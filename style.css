@@ -295,6 +295,10 @@ h3,
     blink 900ms steps(1) infinite;
 }
 
+.typed-mobile {
+  display: none;
+}
+
 .hero-actions,
 .contact-links {
   display: flex;
@@ -890,21 +894,34 @@ h3 {
   }
 
   .typed-text {
-    position: static;
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    white-space: normal;
-    overflow: visible;
-    overflow-wrap: normal;
-    word-break: keep-all;
-    text-wrap: balance;
-    line-height: 1.28;
-    animation: none;
+    display: none;
   }
 
   .typed-cursor {
     display: none;
+  }
+
+  .typed-mobile {
+    display: grid;
+    justify-items: center;
+    gap: 0.2rem;
+    color: var(--accent-soft);
+    line-height: 1.22;
+  }
+
+  .typed-mobile-line {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+  }
+
+  .typed-mobile-line-1 {
+    animation: typing-mobile-line-1 1.9s steps(28, end) 0.2s forwards;
+  }
+
+  .typed-mobile-line-2 {
+    animation: typing-mobile-line-2 1.4s steps(17, end) 2.15s forwards;
   }
 
   .hero-actions {
@@ -988,13 +1005,13 @@ h3 {
     width: 100%;
   }
 
-  .typed-shell {
-    text-align: center;
-  }
-
   .hero-title-typed {
     min-height: auto;
     padding-bottom: 0;
+  }
+
+  .typed-mobile {
+    font-size: clamp(0.92rem, 4.9vw, 1.22rem);
   }
 
   .timeline-item {
@@ -1009,5 +1026,25 @@ h3 {
   .timeline-meta,
   .timeline-main ul {
     font-size: 0.9rem;
+  }
+}
+
+@keyframes typing-mobile-line-1 {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 28ch;
+  }
+}
+
+@keyframes typing-mobile-line-2 {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 17ch;
   }
 }
