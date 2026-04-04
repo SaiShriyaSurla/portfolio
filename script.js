@@ -80,16 +80,14 @@ window.addEventListener("resize", updateTimelineRail);
 const timelineToggles = document.querySelectorAll('.timeline-toggle');
 const resumeMenus = document.querySelectorAll('.resume-menu');
 const themeToggle = document.querySelector('.theme-toggle');
-const themeToggleLabel = document.querySelector('.theme-toggle-label');
 
 const applyTheme = (theme) => {
   document.body.dataset.theme = theme;
-  if (!themeToggle || !themeToggleLabel) return;
+  if (!themeToggle) return;
 
   const isLight = theme === 'light';
   themeToggle.setAttribute('aria-pressed', String(isLight));
   themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
-  themeToggleLabel.textContent = isLight ? 'Dark' : 'Light';
 };
 
 const savedTheme = localStorage.getItem('portfolio-theme');
