@@ -79,6 +79,21 @@ window.addEventListener("resize", updateTimelineRail);
 
 const timelineToggles = document.querySelectorAll('.timeline-toggle');
 const resumeMenus = document.querySelectorAll('.resume-menu');
+const themeToggle = document.querySelector('.theme-toggle');
+const themeToggleLabel = document.querySelector('.theme-toggle-label');
+
+const applyTheme = (theme) => {
+  document.body.dataset.theme = theme;
+  if (!themeToggle || !themeToggleLabel) return;
+
+  const isLight = theme === 'light';
+  themeToggle.setAttribute('aria-pressed', String(isLight));
+  themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+  themeToggleLabel.textContent = isLight ? 'Dark' : 'Light';
+};
+
+const savedTheme = localStorage.getItem('portfolio-theme');
+applyTheme(savedTheme === 'light' ? 'light' : 'dark');
 
 timelineToggles.forEach((button) => {
   button.addEventListener('click', () => {
@@ -103,3 +118,11 @@ document.addEventListener('click', (event) => {
     menu.open = false;
   });
 });
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const nextTheme = document.body.dataset.theme === 'light' ? 'dark' : 'light';
+    applyTheme(nextTheme);
+    localStorage.setItem('portfolio-theme', nextTheme);
+  });
+}
