@@ -90,8 +90,7 @@ const applyTheme = (theme) => {
   themeToggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
 };
 
-const savedTheme = localStorage.getItem('portfolio-theme');
-applyTheme(savedTheme === 'light' ? 'light' : 'dark');
+applyTheme('dark');
 
 timelineToggles.forEach((button) => {
   button.addEventListener('click', () => {
@@ -121,6 +120,5 @@ if (themeToggle) {
   themeToggle.addEventListener('click', () => {
     const nextTheme = document.body.dataset.theme === 'light' ? 'dark' : 'light';
     applyTheme(nextTheme);
-    localStorage.setItem('portfolio-theme', nextTheme);
   });
 }
